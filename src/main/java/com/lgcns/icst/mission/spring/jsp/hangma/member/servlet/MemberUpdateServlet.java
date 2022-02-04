@@ -44,6 +44,7 @@ public class MemberUpdateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String empNm = req.getParameter("empNm");
+        String empRank = req.getParameter("empRank");
 
         MemberBiz memberBiz = new MemberBiz();
         try {
@@ -53,7 +54,7 @@ public class MemberUpdateServlet extends HttpServlet {
             }
             Integer empNo = (Integer) session.getAttribute(SessionKey.EMP_NO);
 
-            memberBiz.updateEmployee(new EmployeeEntity(empNo, empNm));
+            memberBiz.updateEmployee(new EmployeeEntity(empNo, empNm, empRank));
 
             resp.sendRedirect(req.getContextPath() + "/menu/list");
 

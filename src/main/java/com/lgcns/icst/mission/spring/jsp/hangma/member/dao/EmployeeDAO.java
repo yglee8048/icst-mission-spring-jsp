@@ -14,14 +14,15 @@ public class EmployeeDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
-            String sql = "SELECT EMP_NM FROM HANGMA_EMPLOYEE WHERE EMP_NO = ?";
+            String sql = "SELECT EMP_NM, EMP_RANK FROM HANGMA_EMPLOYEE WHERE EMP_NO = ?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, empNo);
 
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 String empNm = resultSet.getString("EMP_NM");
-                return new EmployeeEntity(empNo, empNm);
+                String empRank = resultSet.getString("EMP_RANK");
+                return new EmployeeEntity(empNo, empNm, empRank);
             }
             return null;
         } finally {

@@ -6,8 +6,9 @@ DROP TABLE HANGMA_MENU;
 -- ---------------------------------------------------- --
 CREATE TABLE HANGMA_EMPLOYEE
 (
-    EMP_NO NUMBER(5, 0),
-    EMP_NM VARCHAR2(30),
+    EMP_NO   NUMBER(5, 0),
+    EMP_NM   VARCHAR2(30),
+    EMP_RANK VARCHAR2(6),
     PRIMARY KEY (EMP_NO)
 );
 -- ---------------------------------------------------- --

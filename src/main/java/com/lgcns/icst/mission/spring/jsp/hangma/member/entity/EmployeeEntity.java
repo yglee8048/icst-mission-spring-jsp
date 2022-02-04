@@ -4,10 +4,12 @@ public class EmployeeEntity {
 
     private Integer empNo;
     private String empNm;
+    private EmpRank empRank;
 
-    public EmployeeEntity(Integer empNo, String empNm) {
+    public EmployeeEntity(Integer empNo, String empNm, String empRank) {
         this.empNo = empNo;
         this.empNm = empNm;
+        this.empRank = EmpRank.valueOf(empRank);
     }
 
     public Integer getEmpNo() {
@@ -18,7 +20,7 @@ public class EmployeeEntity {
         return empNm;
     }
 
-    public void setEmpNm(String empNm) {
-        this.empNm = empNm;
+    public EmpRank getRank() {
+        return empRank;
     }
 }
