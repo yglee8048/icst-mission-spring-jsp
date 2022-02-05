@@ -1,5 +1,6 @@
 DROP TABLE HANGMA_EMPLOYEE;
 DROP TABLE HANGMA_MENU;
+DROP TABLE HANGMA_ORDER;
 
 -- ---------------------------------------------------- --
 --  DDL for Table HANGMA_EMPLOYEE
@@ -23,9 +24,21 @@ CREATE TABLE HANGMA_MENU
     IMG_FILE_NM VARCHAR2(30),
     PRIMARY KEY (MENU_ID)
 );
+-- ---------------------------------------------------- --
+--  DDL for Table HANGMA_ORDER
+-- ---------------------------------------------------- --
+CREATE TABLE HANGMA_ORDER
+(
+    ORDER_ID       NUMBER,
+    EMP_NO         NUMBER(5, 0),
+    PRICE          NUMBER,
+    DISCOUNT_PRICE NUMBER,
+    ORDER_DT       DATE,
+    PRIMARY KEY (ORDER_ID)
+);
 
-INSERT INTO HANGMA_EMPLOYEE (EMP_NO, EMP_NM)
-VALUES (88999, '홍길동');
+INSERT INTO HANGMA_EMPLOYEE (EMP_NO, EMP_NM, EMP_RANK)
+VALUES (88999, '홍길동', 'VIP');
 
 INSERT INTO HANGMA_MENU (MENU_ID, CATEGORY, MENU_NM, PRICE, IMG_FILE_NM)
 VALUES ('1', 'COFFEE_HOT', '아메리카노', 1000, 'americano.jpg');

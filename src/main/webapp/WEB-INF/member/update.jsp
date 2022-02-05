@@ -34,6 +34,13 @@
                     *이름을 입력해주세요
                 </td>
             </tr>
+            <tr>
+                <th><label for="empNm">등급</label></th>
+                <td>
+                    <input type="text" id="empRank" name="empRank" value="<%=member.getEmpRank()%>" placeholder="등급"
+                           required>
+                </td>
+            </tr>
             </tbody>
         </table>
         <hr>

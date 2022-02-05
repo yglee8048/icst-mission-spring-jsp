@@ -20,7 +20,7 @@ public class EmployeeEntity {
         return empNm;
     }
 
-    public EmpRank getRank() {
+    public EmpRank getEmpRank() {
         return empRank;
     }
 }
