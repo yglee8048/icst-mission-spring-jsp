@@ -1,6 +1,6 @@
 package com.lgcns.icst.mission.spring.jsp.hangma.order.entity;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 public class OrderEntity {
 
@@ -8,9 +8,9 @@ public class OrderEntity {
     private Integer empNo;
     private Integer price;
     private Integer discountPrice;
-    private LocalDateTime orderDt;
+    private Date orderDt;
 
-    public OrderEntity(Long orderId, Integer empNo, Integer price, Integer discountPrice, LocalDateTime orderDt) {
+    public OrderEntity(Long orderId, Integer empNo, Integer price, Integer discountPrice, Date orderDt) {
         this.orderId = orderId;
         this.empNo = empNo;
         this.price = price;
@@ -34,7 +34,7 @@ public class OrderEntity {
         return discountPrice;
     }
 
-    public LocalDateTime getOrderDt() {
+    public Date getOrderDt() {
         return orderDt;
     }
 }

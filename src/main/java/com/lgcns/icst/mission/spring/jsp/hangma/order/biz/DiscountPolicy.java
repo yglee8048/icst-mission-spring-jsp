@@ -4,5 +4,5 @@ import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmpRank;
 
 public interface DiscountPolicy {
 
-    int discount(EmpRank empRank, int price);
+    int getDiscountPrice(EmpRank empRank, int price);
 }
