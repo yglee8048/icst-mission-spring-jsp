@@ -48,13 +48,13 @@ public class EmployeeDAO {
         }
     }
 
-    public void update(Connection connection, EmployeeEntity employeeEntity) throws Exception {
+    public void update(Connection connection, Integer empNo, String empNm) throws Exception {
         PreparedStatement preparedStatement = null;
         try {
             String sql = "UPDATE HANGMA_EMPLOYEE SET EMP_NM = ? WHERE EMP_NO = ?";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, employeeEntity.getEmpNm());
-            preparedStatement.setInt(2, employeeEntity.getEmpNo());
+            preparedStatement.setString(1, empNm);
+            preparedStatement.setInt(2, empNo);
 
             int rows = preparedStatement.executeUpdate();
             if (rows != 1) {

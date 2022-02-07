@@ -40,12 +40,12 @@ public class MemberBiz {
         }
     }
 
-    public void updateEmployee(EmployeeEntity employeeEntity) throws Exception {
+    public void updateEmployee(Integer empNo, String empNm) throws Exception {
         EmployeeDAO employeeDao = new EmployeeDAO();
         Connection connection = null;
         try {
             connection = JdbcUtil.getConnection();
-            employeeDao.update(connection, employeeEntity);
+            employeeDao.update(connection, empNo, empNm);
 
             JdbcUtil.commit(connection);
         } catch (Exception e) {

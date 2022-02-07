@@ -35,10 +35,10 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="empNm">등급</label></th>
+                <th><label for="empRank">등급</label></th>
                 <td>
                     <input type="text" id="empRank" name="empRank" value="<%=member.getEmpRank()%>" placeholder="등급"
-                           required>
+                           disabled>
                 </td>
             </tr>
             </tbody>

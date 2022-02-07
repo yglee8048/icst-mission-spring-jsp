@@ -19,6 +19,7 @@
         <a id="updateBtn" href="<%=request.getContextPath()%>/member/update">회원수정</a>
         <a id="withdrawBtn"
            onclick="if(confirm('정말 탈퇴하시겠습니까?')){location.href='<%=request.getContextPath()%>/member/withdraw'}">회원탈퇴</a>
+        <a id="orderListBtn" href="<%=request.getContextPath()%>/order/list">주문목록</a>
         <a id="manageMenuBtn" href="<%=request.getContextPath()%>/menu/manage">메뉴관리</a>
     </div>
 </header>
@@ -125,7 +126,7 @@
     </div>
 </div>
 <div class="order">
-    <div id="orderForm">
+    <form id="orderForm" action="<%=request.getContextPath()%>/menu/order" method="post">
         <input type="hidden" id="price" name="price">
         <div class="orderDetails">
             <h1>주문내역</h1>
@@ -175,9 +176,9 @@
             </tbody>
         </table>
         <div class="orderButtonDiv">
-            <button type="button">사원결제</button>
+            <button type="submit">사원결제</button>
         </div>
-    </div>
+    </form>
 </div>
 </body>
 </html>
