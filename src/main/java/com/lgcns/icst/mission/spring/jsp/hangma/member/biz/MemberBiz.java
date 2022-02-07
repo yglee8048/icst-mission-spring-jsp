@@ -61,7 +61,7 @@ public class MemberBiz {
         Connection connection = null;
         try {
             connection = JdbcUtil.getConnection();
-            employeeDao.deleteByEmployeeNumber(connection, empNo);
+            employeeDao.deleteByEmpNo(connection, empNo);
 
             JdbcUtil.commit(connection);
         } catch (Exception e) {

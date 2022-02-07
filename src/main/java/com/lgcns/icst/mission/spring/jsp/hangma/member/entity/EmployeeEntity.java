@@ -6,10 +6,9 @@ public class EmployeeEntity {
     private String empNm;
     private EmpRank empRank;
 
-    public EmployeeEntity(Integer empNo, String empNm, String empRank) {
+    public EmployeeEntity(Integer empNo, String empNm) {
         this.empNo = empNo;
         this.empNm = empNm;
-        this.empRank = EmpRank.valueOf(empRank);
     }
 
     public Integer getEmpNo() {

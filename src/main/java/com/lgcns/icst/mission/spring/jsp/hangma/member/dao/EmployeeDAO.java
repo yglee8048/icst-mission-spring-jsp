@@ -21,8 +21,7 @@ public class EmployeeDAO {
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 String empNm = resultSet.getString("EMP_NM");
-                String empRank = resultSet.getString("EMP_RANK");
-                return new EmployeeEntity(empNo, empNm, empRank);
+                return new EmployeeEntity(empNo, empNm);
             }
             return null;
         } finally {
@@ -34,7 +33,7 @@ public class EmployeeDAO {
     public void save(Connection connection, Integer empNo, String empNm) throws Exception {
         PreparedStatement preparedStatement = null;
         try {
-            String sql = "INSERT INTO HANGMA_EMPLOYEE VALUES(?, ?)";
+            String sql = "INSERT INTO HANGMA_EMPLOYEE(EMP_NO, EMP_NM) VALUES(?, ?)";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, empNo);
             preparedStatement.setString(2, empNm);
@@ -65,12 +64,12 @@ public class EmployeeDAO {
         }
     }
 
-    public void deleteByEmployeeNumber(Connection connection, Integer employeeNumber) throws Exception {
+    public void deleteByEmpNo(Connection connection, Integer empNo) throws Exception {
         PreparedStatement preparedStatement = null;
         try {
             String sql = "DELETE FROM HANGMA_EMPLOYEE WHERE EMP_NO = ?";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, employeeNumber);
+            preparedStatement.setInt(1, empNo);
 
             int rows = preparedStatement.executeUpdate();
             if (rows != 1) {
