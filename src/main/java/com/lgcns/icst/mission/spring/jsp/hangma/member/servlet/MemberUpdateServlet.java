@@ -1,8 +1,11 @@
 package com.lgcns.icst.mission.spring.jsp.hangma.member.servlet;
 
+import com.lgcns.icst.mission.spring.jsp.hangma.common.config.AppConfig;
 import com.lgcns.icst.mission.spring.jsp.hangma.common.constant.SessionKey;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.biz.MemberBiz;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmployeeEntity;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,10 +19,15 @@ import java.io.IOException;
 @WebServlet(name = "memberUpdateServlet", urlPatterns = "/member/update")
 public class MemberUpdateServlet extends HttpServlet {
 
+    private final MemberBiz memberBiz;
+
+    public MemberUpdateServlet() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        this.memberBiz = applicationContext.getBean(MemberBiz.class);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        MemberBiz memberBiz = new MemberBiz();
-
         try {
             HttpSession session = req.getSession();
             Integer empNo = (Integer) session.getAttribute(SessionKey.EMP_NO);
@@ -45,7 +53,6 @@ public class MemberUpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String empNm = req.getParameter("empNm");
 
-        MemberBiz memberBiz = new MemberBiz();
         try {
             HttpSession session = req.getSession(false);
             if (session == null) {

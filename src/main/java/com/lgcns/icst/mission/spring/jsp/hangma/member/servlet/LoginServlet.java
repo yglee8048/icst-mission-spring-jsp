@@ -1,8 +1,11 @@
 package com.lgcns.icst.mission.spring.jsp.hangma.member.servlet;
 
+import com.lgcns.icst.mission.spring.jsp.hangma.common.config.AppConfig;
 import com.lgcns.icst.mission.spring.jsp.hangma.common.constant.SessionKey;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.biz.MemberBiz;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmployeeEntity;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +19,13 @@ import java.io.IOException;
 @WebServlet(name = "loginServlet", urlPatterns = "/member/login")
 public class LoginServlet extends HttpServlet {
 
+    private final MemberBiz memberBiz;
+
+    public LoginServlet(MemberBiz memberBiz) {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        this.memberBiz = applicationContext.getBean(MemberBiz.class);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/member/login.jsp");
@@ -25,7 +35,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String empNo = req.getParameter("empNo");
-        MemberBiz memberBiz = new MemberBiz();
         try {
             EmployeeEntity employeeEntity = memberBiz.findByEmpNo(Integer.parseInt(empNo));
 

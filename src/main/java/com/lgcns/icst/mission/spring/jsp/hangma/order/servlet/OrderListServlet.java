@@ -1,9 +1,11 @@
-package com.lgcns.icst.mission.spring.jsp.hangma.member.servlet;
+package com.lgcns.icst.mission.spring.jsp.hangma.order.servlet;
 
 import com.lgcns.icst.mission.spring.jsp.hangma.common.config.AppConfig;
 import com.lgcns.icst.mission.spring.jsp.hangma.common.constant.SessionKey;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.biz.MemberBiz;
-import org.springframework.context.ApplicationContext;
+import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmployeeEntity;
+import com.lgcns.icst.mission.spring.jsp.hangma.order.biz.OrderBiz;
+import com.lgcns.icst.mission.spring.jsp.hangma.order.entity.OrderEntity;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.RequestDispatcher;
@@ -14,15 +16,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "withdrawServlet", urlPatterns = "/member/withdraw")
-public class WithdrawServlet extends HttpServlet {
+@WebServlet(name = "orderListServlet", urlPatterns = "/order/list")
+public class OrderListServlet extends HttpServlet {
 
+    private final OrderBiz orderBiz;
     private final MemberBiz memberBiz;
 
-    public WithdrawServlet() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        this.memberBiz = applicationContext.getBean(MemberBiz.class);
+    public OrderListServlet() {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        orderBiz = applicationContext.getBean(OrderBiz.class);
+        memberBiz = applicationContext.getBean(MemberBiz.class);
     }
 
     @Override
@@ -34,9 +39,14 @@ public class WithdrawServlet extends HttpServlet {
                 throw new Exception("로그인 되지 않은 사용자 입니다.");
             }
 
-            memberBiz.withdraw(empNo);
+            EmployeeEntity employeeEntity = memberBiz.findByEmpNo(empNo);
+            req.setAttribute("empNm", employeeEntity.getEmpNm());
 
-            resp.sendRedirect(req.getContextPath() + "/member/login");
+            List<OrderEntity> orders = orderBiz.findAllOrdersByEmpNoOrderByIdDesc(empNo);
+            req.setAttribute("orders", orders);
+
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/order/list.jsp");
+            requestDispatcher.forward(req, resp);
 
         } catch (Exception e) {
             req.setAttribute("errorMessage", e.getMessage());

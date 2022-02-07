@@ -1,6 +1,9 @@
 package com.lgcns.icst.mission.spring.jsp.hangma.member.servlet;
 
+import com.lgcns.icst.mission.spring.jsp.hangma.common.config.AppConfig;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.biz.MemberBiz;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +16,13 @@ import java.io.IOException;
 @WebServlet(name = "signUpServlet", urlPatterns = "/member/sign-up")
 public class SignUpServlet extends HttpServlet {
 
+    private final MemberBiz memberBiz;
+
+    public SignUpServlet() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        this.memberBiz = applicationContext.getBean(MemberBiz.class);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/member/signUp.jsp");
@@ -24,7 +34,6 @@ public class SignUpServlet extends HttpServlet {
         String empNo = req.getParameter("empNo");
         String empNm = req.getParameter("empNm");
 
-        MemberBiz memberBiz = new MemberBiz();
         try {
             memberBiz.signUp(Integer.parseInt(empNo), empNm);
 

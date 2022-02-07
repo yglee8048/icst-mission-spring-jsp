@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.lgcns.icst.mission.spring.jsp.hangma.order.entity.OrderEntity" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -10,7 +12,7 @@
 </head>
 <body>
 <div class="order">
-    <h1> {사용자이름} 님의 주문내역</h1>
+    <h1> <%=request.getAttribute("empNm")%> 님의 주문내역</h1>
     <hr>
     <table>
         <colgroup>
@@ -30,13 +32,20 @@
         </tr>
         </thead>
         <tbody>
+        <%
+            List<OrderEntity> orders = (List<OrderEntity>) request.getAttribute("orders");
+            for(OrderEntity order : orders) {
+        %>
         <tr>
-            <td>1</td>
-            <td>10000</td>
-            <td>1000</td>
-            <td>9000</td>
-            <td>2022-02-02 10:50:23</td>
+            <td><%=order.getOrderId()%></td>
+            <td><%=order.getPrice()%></td>
+            <td><%=order.getDiscountPrice()%></td>
+            <td><%=order.getPrice() - order.getDiscountPrice()%></td>
+            <td><%=order.getOrderDt()%></td>
         </tr>
+        <%
+            }
+        %>
         </tbody>
     </table>
     <hr>

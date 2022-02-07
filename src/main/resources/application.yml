@@ -7,7 +7,7 @@ spring:
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
     url: jdbc:oracle:thin:@10.100.70.7:1521:XE
-    username: mission##
-    password: mission##
+    username: mission09
+    password: mission09
     hikari:
       auto-commit: false

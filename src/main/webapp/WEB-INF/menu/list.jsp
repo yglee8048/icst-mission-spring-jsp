@@ -126,7 +126,7 @@
     </div>
 </div>
 <div class="order">
-    <form id="orderForm" action="<%=request.getContextPath()%>/menu/order" method="post">
+    <form id="orderForm" action="<%=request.getContextPath()%>/order/insert" method="post">
         <input type="hidden" id="price" name="price">
         <div class="orderDetails">
             <h1>주문내역</h1>

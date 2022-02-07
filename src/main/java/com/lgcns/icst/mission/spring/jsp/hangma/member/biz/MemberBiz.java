@@ -8,13 +8,18 @@ import java.sql.Connection;
 
 public class MemberBiz {
 
+    private final EmployeeDAO employeeDAO;
+
+    public MemberBiz(EmployeeDAO employeeDAO) {
+        this.employeeDAO = employeeDAO;
+    }
+
     public EmployeeEntity findByEmpNo(Integer empNo) throws Exception {
-        EmployeeDAO employeeDao = new EmployeeDAO();
         Connection connection = null;
         try {
             connection = JdbcUtil.getConnection();
 
-            EmployeeEntity employeeEntity = employeeDao.findByEmpNo(connection, empNo);
+            EmployeeEntity employeeEntity = employeeDAO.findByEmpNo(connection, empNo);
             if (employeeEntity == null) {
                 throw new Exception("일치하는 사번이 존재하지 않습니다.");
             }
@@ -25,12 +30,11 @@ public class MemberBiz {
     }
 
     public void signUp(Integer empNo, String empNm) throws Exception {
-        EmployeeDAO employeeDao = new EmployeeDAO();
         Connection connection = null;
         try {
             connection = JdbcUtil.getConnection();
 
-            employeeDao.save(connection, empNo, empNm);
+            employeeDAO.save(connection, empNo, empNm);
             JdbcUtil.commit(connection);
         } catch (Exception e) {
             JdbcUtil.rollback(connection);
@@ -41,11 +45,10 @@ public class MemberBiz {
     }
 
     public void updateEmployee(Integer empNo, String empNm) throws Exception {
-        EmployeeDAO employeeDao = new EmployeeDAO();
         Connection connection = null;
         try {
             connection = JdbcUtil.getConnection();
-            employeeDao.update(connection, empNo, empNm);
+            employeeDAO.update(connection, empNo, empNm);
 
             JdbcUtil.commit(connection);
         } catch (Exception e) {
@@ -57,11 +60,10 @@ public class MemberBiz {
     }
 
     public void withdraw(Integer empNo) throws Exception {
-        EmployeeDAO employeeDao = new EmployeeDAO();
         Connection connection = null;
         try {
             connection = JdbcUtil.getConnection();
-            employeeDao.deleteByEmpNo(connection, empNo);
+            employeeDAO.deleteByEmpNo(connection, empNo);
 
             JdbcUtil.commit(connection);
         } catch (Exception e) {

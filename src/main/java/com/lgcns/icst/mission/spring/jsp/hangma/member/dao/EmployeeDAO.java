@@ -1,6 +1,7 @@
 package com.lgcns.icst.mission.spring.jsp.hangma.member.dao;
 
 import com.lgcns.icst.mission.spring.jsp.hangma.common.util.JdbcUtil;
+import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmpRank;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmployeeEntity;
 
 import java.sql.Connection;
@@ -21,7 +22,8 @@ public class EmployeeDAO {
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 String empNm = resultSet.getString("EMP_NM");
-                return new EmployeeEntity(empNo, empNm);
+                String empRank = resultSet.getString("EMP_RANK");
+                return new EmployeeEntity(empNo, empNm, empRank);
             }
             return null;
         } finally {
@@ -33,10 +35,11 @@ public class EmployeeDAO {
     public void save(Connection connection, Integer empNo, String empNm) throws Exception {
         PreparedStatement preparedStatement = null;
         try {
-            String sql = "INSERT INTO HANGMA_EMPLOYEE(EMP_NO, EMP_NM) VALUES(?, ?)";
+            String sql = "INSERT INTO HANGMA_EMPLOYEE(EMP_NO, EMP_NM, EMP_RANK) VALUES(?, ?, ?)";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, empNo);
             preparedStatement.setString(2, empNm);
+            preparedStatement.setString(3, EmpRank.NORMAL.name());
 
             int rows = preparedStatement.executeUpdate();
             if (rows != 1) {
