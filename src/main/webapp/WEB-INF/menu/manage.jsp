@@ -35,7 +35,7 @@
                 if (item.getCategory().equals(Category.COFFEE_HOT)) {
         %>
         <div class="item"
-             onclick="location.href='<%=request.getContextPath()%>/menu/update?menuId=<%=item.getMenuId()%>'">
+             onclick="location.href='<%=request.getContextPath()%>/menu/<%=item.getMenuId()%>/update'">
             <input type="hidden" class="menuId" value="<%=item.getMenuId()%>">
             <img src="<%=request.getContextPath()%>/img/<%=item.getImgFileNm()%>" alt="menu_img">
             <p class="menuName">
@@ -54,7 +54,7 @@
                 if (item.getCategory().equals(Category.COFFEE_ICE)) {
         %>
         <div class="item"
-             onclick="location.href='<%=request.getContextPath()%>/menu/update?menuId=<%=item.getMenuId()%>'">
+             onclick="location.href='<%=request.getContextPath()%>/menu/<%=item.getMenuId()%>/update'">
             <input type="hidden" class="menuId" value="<%=item.getMenuId()%>">
             <img src="<%=request.getContextPath()%>/img/<%=item.getImgFileNm()%>" alt="menu_img">
             <p class="menuName">
@@ -73,7 +73,7 @@
                 if (item.getCategory().equals(Category.TEA)) {
         %>
         <div class="item"
-             onclick="location.href='<%=request.getContextPath()%>/menu/update?menuId=<%=item.getMenuId()%>'">
+             onclick="location.href='<%=request.getContextPath()%>/menu/<%=item.getMenuId()%>/update'">
             <input type="hidden" class="menuId" value="<%=item.getMenuId()%>">
             <img src="<%=request.getContextPath()%>/img/<%=item.getImgFileNm()%>" alt="menu_img">
             <p class="menuName">
@@ -92,7 +92,7 @@
                 if (item.getCategory().equals(Category.JUICE)) {
         %>
         <div class="item"
-             onclick="location.href='<%=request.getContextPath()%>/menu/update?menuId=<%=item.getMenuId()%>'">
+             onclick="location.href='<%=request.getContextPath()%>/menu/<%=item.getMenuId()%>/update'">
             <input type="hidden" class="menuId" value="<%=item.getMenuId()%>">
             <img src="<%=request.getContextPath()%>/img/<%=item.getImgFileNm()%>" alt="menu_img">
             <p class="menuName">
@@ -111,7 +111,7 @@
                 if (item.getCategory().equals(Category.BAKERY)) {
         %>
         <div class="item"
-             onclick="location.href='<%=request.getContextPath()%>/menu/update?menuId=<%=item.getMenuId()%>'">
+             onclick="location.href='<%=request.getContextPath()%>/menu/<%=item.getMenuId()%>/update'">
             <input type="hidden" class="menuId" value="<%=item.getMenuId()%>">
             <img src="<%=request.getContextPath()%>/img/<%=item.getImgFileNm()%>" alt="menu_img">
             <p class="menuName">

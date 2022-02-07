@@ -8,14 +8,6 @@ public class MenuEntity {
     private Integer price;
     private String imgFileNm;
 
-    public MenuEntity(Long menuId, Category category, String menuNm, Integer price, String imgFileNm) {
-        this.menuId = menuId;
-        this.category = category;
-        this.menuNm = menuNm;
-        this.price = price;
-        this.imgFileNm = imgFileNm;
-    }
-
     public MenuEntity(Long menuId, String category, String menuNm, Integer price, String imgFileNm) {
         this.menuId = menuId;
         this.category = Category.valueOf(category);
@@ -42,5 +34,9 @@ public class MenuEntity {
 
     public String getImgFileNm() {
         return imgFileNm;
+    }
+
+    public void setMenuId(Long menuId) {
+        this.menuId = menuId;
     }
 }

@@ -11,16 +11,16 @@
 <body>
 <div class="signUp">
     <h1>메뉴수정</h1>
-    <form action="<%=request.getContextPath()%>/menu/update" method="post">
+    <%
+        MenuEntity menu = (MenuEntity) request.getAttribute("menu");
+    %>
+    <form action="<%=request.getContextPath()%>/menu/<%=menu.getMenuId()%>/update" method="post">
         <hr>
         <table>
             <colgroup>
                 <col style="width: 25%;">
                 <col style="width: 75%;">
             </colgroup>
-            <%
-                MenuEntity menu = (MenuEntity) request.getAttribute("menu");
-            %>
             <tbody>
             <tr>
                 <th><label for="menuId">메뉴번호</label></th>
@@ -89,7 +89,7 @@
         <div class="buttonDiv">
             <button type="submit">수정</button>
             <button type="button" id="deleteBtn"
-                    onclick="if(confirm('정말로 삭제하시겠습니까?')){location.href='<%=request.getContextPath()%>/menu/delete?menuId=<%=menu.getMenuId()%>'}">
+                    onclick="if(confirm('정말로 삭제하시겠습니까?')){location.href='<%=request.getContextPath()%>/menu/<%=menu.getMenuId()%>/delete'}">
                 삭제
             </button>
             <button type="button" id="cancelBtn" onclick="location.href='<%=request.getContextPath()%>/menu/manage'">
