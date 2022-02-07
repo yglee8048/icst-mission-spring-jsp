@@ -3,6 +3,7 @@ package com.lgcns.icst.mission.spring.jsp.hangma.menu.dao;
 import com.lgcns.icst.mission.spring.jsp.hangma.common.util.JdbcUtil;
 import com.lgcns.icst.mission.spring.jsp.hangma.menu.entity.Category;
 import com.lgcns.icst.mission.spring.jsp.hangma.menu.entity.MenuEntity;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class MenuDAO {
 
     public List<MenuEntity> findAll(Connection connection) throws SQLException {

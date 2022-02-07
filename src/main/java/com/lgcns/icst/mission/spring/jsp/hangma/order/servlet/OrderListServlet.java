@@ -1,12 +1,11 @@
 package com.lgcns.icst.mission.spring.jsp.hangma.order.servlet;
 
-import com.lgcns.icst.mission.spring.jsp.hangma.common.config.AppConfig;
 import com.lgcns.icst.mission.spring.jsp.hangma.common.constant.SessionKey;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.biz.MemberBiz;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmployeeEntity;
 import com.lgcns.icst.mission.spring.jsp.hangma.order.biz.OrderBiz;
 import com.lgcns.icst.mission.spring.jsp.hangma.order.entity.OrderEntity;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,10 +23,10 @@ public class OrderListServlet extends HttpServlet {
     private final OrderBiz orderBiz;
     private final MemberBiz memberBiz;
 
-    public OrderListServlet() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        orderBiz = applicationContext.getBean(OrderBiz.class);
-        memberBiz = applicationContext.getBean(MemberBiz.class);
+    @Autowired
+    public OrderListServlet(OrderBiz orderBiz, MemberBiz memberBiz) {
+        this.orderBiz = orderBiz;
+        this.memberBiz = memberBiz;
     }
 
     @Override

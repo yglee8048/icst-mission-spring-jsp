@@ -1,7 +1,11 @@
 package com.lgcns.icst.mission.spring.jsp.hangma.order.biz;
 
 import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmpRank;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
+@Qualifier("fixed-discount")
 public class FixedDiscountPolicy implements DiscountPolicy {
 
     @Override

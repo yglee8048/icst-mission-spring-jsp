@@ -3,13 +3,17 @@ package com.lgcns.icst.mission.spring.jsp.hangma.member.biz;
 import com.lgcns.icst.mission.spring.jsp.hangma.common.util.JdbcUtil;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.dao.EmployeeDAO;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmployeeEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 
+@Service
 public class MemberBiz {
 
     private final EmployeeDAO employeeDAO;
 
+    @Autowired
     public MemberBiz(EmployeeDAO employeeDAO) {
         this.employeeDAO = employeeDAO;
     }

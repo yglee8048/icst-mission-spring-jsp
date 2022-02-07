@@ -3,12 +3,14 @@ package com.lgcns.icst.mission.spring.jsp.hangma.member.dao;
 import com.lgcns.icst.mission.spring.jsp.hangma.common.util.JdbcUtil;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmpRank;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmployeeEntity;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Repository
 public class EmployeeDAO {
 
     public EmployeeEntity findByEmpNo(Connection connection, Integer empNo) throws SQLException {

@@ -1,10 +1,8 @@
 package com.lgcns.icst.mission.spring.jsp.hangma.menu.servlet;
 
-import com.lgcns.icst.mission.spring.jsp.hangma.common.config.AppConfig;
 import com.lgcns.icst.mission.spring.jsp.hangma.menu.biz.MenuBiz;
 import com.lgcns.icst.mission.spring.jsp.hangma.menu.entity.Category;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,9 +17,9 @@ public class MenuInsertServlet extends HttpServlet {
 
     private final MenuBiz menuBiz;
 
-    public MenuInsertServlet() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        this.menuBiz = applicationContext.getBean(MenuBiz.class);
+    @Autowired
+    public MenuInsertServlet(MenuBiz menuBiz) {
+        this.menuBiz = menuBiz;
     }
 
     @Override

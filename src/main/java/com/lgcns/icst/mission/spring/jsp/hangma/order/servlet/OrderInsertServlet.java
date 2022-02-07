@@ -1,9 +1,8 @@
 package com.lgcns.icst.mission.spring.jsp.hangma.order.servlet;
 
-import com.lgcns.icst.mission.spring.jsp.hangma.common.config.AppConfig;
 import com.lgcns.icst.mission.spring.jsp.hangma.common.constant.SessionKey;
 import com.lgcns.icst.mission.spring.jsp.hangma.order.biz.OrderBiz;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,9 +18,9 @@ public class OrderInsertServlet extends HttpServlet {
 
     private final OrderBiz orderBiz;
 
-    public OrderInsertServlet() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        orderBiz = applicationContext.getBean(OrderBiz.class);
+    @Autowired
+    public OrderInsertServlet(OrderBiz orderBiz) {
+        this.orderBiz = orderBiz;
     }
 
     @Override

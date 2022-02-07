@@ -4,15 +4,19 @@ import com.lgcns.icst.mission.spring.jsp.hangma.common.util.JdbcUtil;
 import com.lgcns.icst.mission.spring.jsp.hangma.menu.dao.MenuDAO;
 import com.lgcns.icst.mission.spring.jsp.hangma.menu.entity.Category;
 import com.lgcns.icst.mission.spring.jsp.hangma.menu.entity.MenuEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+@Service
 public class MenuBiz {
 
     private final MenuDAO menuDAO;
 
+    @Autowired
     public MenuBiz(MenuDAO menuDAO) {
         this.menuDAO = menuDAO;
     }

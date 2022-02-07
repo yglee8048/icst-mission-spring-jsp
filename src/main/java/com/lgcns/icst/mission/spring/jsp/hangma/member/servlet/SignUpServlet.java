@@ -1,9 +1,7 @@
 package com.lgcns.icst.mission.spring.jsp.hangma.member.servlet;
 
-import com.lgcns.icst.mission.spring.jsp.hangma.common.config.AppConfig;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.biz.MemberBiz;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,9 +16,9 @@ public class SignUpServlet extends HttpServlet {
 
     private final MemberBiz memberBiz;
 
-    public SignUpServlet() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        this.memberBiz = applicationContext.getBean(MemberBiz.class);
+    @Autowired
+    public SignUpServlet(MemberBiz memberBiz) {
+        this.memberBiz = memberBiz;
     }
 
     @Override

@@ -1,11 +1,9 @@
 package com.lgcns.icst.mission.spring.jsp.hangma.member.servlet;
 
-import com.lgcns.icst.mission.spring.jsp.hangma.common.config.AppConfig;
 import com.lgcns.icst.mission.spring.jsp.hangma.common.constant.SessionKey;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.biz.MemberBiz;
 import com.lgcns.icst.mission.spring.jsp.hangma.member.entity.EmployeeEntity;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,9 +19,9 @@ public class LoginServlet extends HttpServlet {
 
     private final MemberBiz memberBiz;
 
+    @Autowired
     public LoginServlet(MemberBiz memberBiz) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        this.memberBiz = applicationContext.getBean(MemberBiz.class);
+        this.memberBiz = memberBiz;
     }
 
     @Override

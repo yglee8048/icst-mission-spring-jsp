@@ -2,6 +2,7 @@ package com.lgcns.icst.mission.spring.jsp.hangma.order.dao;
 
 import com.lgcns.icst.mission.spring.jsp.hangma.common.util.JdbcUtil;
 import com.lgcns.icst.mission.spring.jsp.hangma.order.entity.OrderEntity;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -10,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class OrderDao {
 
     public void insertOrder(Connection connection, Integer empNo, Integer price, Integer discountPrice) throws Exception {
